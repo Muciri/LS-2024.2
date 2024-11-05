@@ -1,9 +1,21 @@
-export function minimo(...numeros) {
-    return Math.min(...numeros);
+export function minimo(array){
+    let min = 9999999;
+    for(let a of array){
+        if(a<min){
+            min = a;
+        }
+    }
+    return min
 }
 
-export function maximo(...numeros) {
-    return Math.max(...numeros);
+export function maximo(array){
+    let max = -9999999;
+    for(let a of array){
+        if(a>max){
+            max = a;
+        }
+    }
+    return max
 }
 
 export function range_simples(n) {
