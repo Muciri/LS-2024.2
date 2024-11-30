@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>LISTA:</h1>
+    <div> </div>
+
+
+
+    <script>
+        function createlist(list){
+            let lista = `<ul>`;
+            for(let i of list){
+                lista += `\n <li>${i}</li>`;
+            }
+            lista += '\n</ul>';
+            return lista;
+        }   
+        
+        const response = window.prompt('digite os items com espaço para formar uma lista: ').split(' ');
+        document.querySelector('div').innerHTML = createlist(response)
+    </script>
+</body>
+</html>
