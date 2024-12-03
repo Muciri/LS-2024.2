@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investimentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="container lg:max-w-screen-lg mx-auto">
+      <h1 class="text-center text-2xl my-12 font-bold">Investimentos</h1>
+      <div class="investiments grid grid-cols-3 gap-3"></div>
+      <script src="./js/main.js" type="module"></script>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <button onclick="generate()" style=" padding: 15px 30px; font-size: 16px; color: white; background-color: #007BFF; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;" >Clique Aqui </button>
+    </div> <br>
+
+    <div id = 'container' style="display: flex; justify-content: space-evenly; flex-wrap: wrap;"> 
+
+    </div>
+
+    <script>
+
+      function formatCurrency(currency) {
+        return currency.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        });
+      }
+      
+      function formatDate(date) {
+        return new Date(date).toLocaleDateString('pt-BR');
+      }
+
+      function investmentCard(investment) {
+        card = 
+        `
+        <div id="investment- ${investment.id}" class="bg-white shadow-md rounded-lg p-4" style="width: 30rem;">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg font-semibold text-gray-700">
+              ${investment.name} 
+            </h3>
+            <p class="text-lg font-semibold text-gray-700">
+              ${formatCurrency(investment.value)}
+            </p>
+          </div>
+          <div class="mt-4">
+            <p class="text-sm text-gray-500">
+              <span class="font-bold">Origem:</span>
+              ${investment.origin}
+            </p>
+            <p class="text-sm text-gray-500">
+              <span class="font-bold">Categoria:</span>
+              ${investment.category}
+            </p>
+            <p class="text-sm text-gray-500">
+              <span class="font-bold">Data:</span>
+              ${formatDate(investment.date)}
+            </p>
+            <p class="text-sm text-gray-500">
+              <span class="font-bold">Taxa:</span>
+              ${investment.interest}
+            </p>
+          </div>
+        </div>
+        `;
+        return card;
+      }
+
+      const investiments = [
+        {
+          name: 'Tesouro Selic 2029',
+          value: 100,
+          origin: 'Tesouro Nacional',
+          category: 'Pos',
+          date: '2023-03-22',
+          interest: '100% Selic',
+        },
+
+        {
+          name: 'Tesouro IPCA 2029',
+          value: 100,
+          origin: 'Tesouro Nacional',
+          category: 'IPCA',
+          date: '2023-03-22',
+          interest: 'IPCA + 5,83%',
+        },   
+        
+        {
+          name: 'Tesouro Selic 2027',
+          value: 120,
+          origin: 'Tesouro Nacional',
+          category: 'Selic',
+          date: '2023-05-15',
+          interest: 'Selic + 0,30%',
+        },
+
+        {
+          name: 'CDB Bancrédito 2030',
+          value: 150,
+          origin: 'Banco Bancrédito',
+          category: 'Prefixado',
+          date: '2023-06-10',
+          interest: '9,50% ao ano',
+        },
+
+        {
+          name: 'Fundo Verde Sustentável',
+          value: 200,
+          origin: 'Gestora EcoInvest',
+          category: 'Multimercado',
+          date: '2023-07-01',
+          interest: 'IPCA + 3,00%',
+        },
+      ];  
+      
+      function generate(){
+        document.getElementById('container').innerHTML = investiments.map(investmentCard).join(''); 
+      }
+
+      
+        
+    </script>
+  </body>
+</html>
